@@ -9,6 +9,7 @@ The ultimate anti-bias tool for browsing the news
 
 * [Why use this?](#motivations)
 * [High Level Design](#design-specification)
+* [Monetization](#monetization-model)
 
 ## Motivations
 
@@ -19,3 +20,7 @@ All humans are susceptible to a large number of well-understood [congnitive bias
 - Filter Processing server (Golang): processes keyword queries, essentially proxying responses from [NewsAPI](https://newsapi.org/) and running subsequent algorithmic bias-measuring functions 
 - WebApp server (Golang): serves the HTML and JS resources of the UI and responds to POST forms in the UI
 - WebApp client (JS): caches query responses from the processing server for individual algorithms, computes and displays final score next to each news article 
+
+## Monetization Model
+
+The website [nwhacks.tech](https://nwhacks.tech) is and will remain free whenever it is running. Eventually we could add premium account functionality with access to more computationally expensive machine learning.
