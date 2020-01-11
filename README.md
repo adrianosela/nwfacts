@@ -1,5 +1,8 @@
 # nwfacts
 
+[![license](https://img.shields.io/github/license/adrianosela/nwfacts.svg)](https://github.com/adrianosela/nwfacts/blob/master/LICENSE)
+[![Generic badge](https://img.shields.io/badge/nwfacts.tech-GREEN.svg)](https://nwfacts.tech)
+
 The ultimate anti-bias tool for browsing the news
 
 ## Contents
