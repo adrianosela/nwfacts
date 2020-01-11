@@ -20,6 +20,8 @@ func NewFactsService(c *config.Config) *Service {
 		config: c,
 	}
 
+	svc.addKeywordEndpoints()
+
 	// conditionally add debug endpoints
 	if c.ServerSettings.Debug {
 		svc.addDebugEndpoints()
