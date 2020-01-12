@@ -1,0 +1,19 @@
+.newsCardCompContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    margin: inherit;
+    padding: 0 70px 0 70px;
+}
+
+.newsCompBody{
+    display: flex;    
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-flow: row wrap;
+}
+
+.busySpinner {
+  text-align: center;
+}

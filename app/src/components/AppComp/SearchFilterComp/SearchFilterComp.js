@@ -1,11 +1,16 @@
 import React from 'react'
 
 import "./SearchFilterComp.css"
+import SearchComp from '../../Home/SearchComp/SearchComp'
+import SearchedCards from '../SearchFilterComp/SearchedCards/SearchedCards'
 
 function SearchFilterComp(){
     return(
         <div className="SearchFilterCompContainer">
-            SearchFilterComp
+            <div className="searchBar">
+                <SearchComp />
+            </div>
+            <div className="searchedCards"><SearchedCards /></div>
         </div>
     )
 }

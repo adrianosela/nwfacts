@@ -1,5 +1,18 @@
 .SearchFilterCompContainer{
     display: flex;
+    flex-flow: column nowrap;
     color: bisque;
-    width: 300px;
+    /* width: 100%; */
+    align-items: center;
+
+}
+
+.searchBar{
+    display: flex;
+    padding: 20px 0 0 0;
+    height: 50%;
+}
+
+.filter{
+
 }

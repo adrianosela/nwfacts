@@ -15,7 +15,7 @@ const AppComp = () => {
                 <TwitterComp />
              </div>
              <div className="content">
-                <HeaderComp />
+                <HeaderComp className="header"/>
                 <FilterComp />
              </div>
             </div>
