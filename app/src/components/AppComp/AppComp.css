@@ -15,3 +15,17 @@
     display: flex;
     flex-flow: column nowrap;
 }
+
+.topContainer {
+    display: flex;
+    width: 100%;
+}
+
+.content {
+    width:70%;
+    background-color: aqua;
+}
+
+.twitter {
+    width:30%;
+}
