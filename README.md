@@ -30,6 +30,12 @@ Our final product is the result of the following secondary goals:
 
 ## Design Specification
 
+### **System Architecture Diagram:**
+
+![](./docs/diagrams/architecture.png)
+
+### **Components Specification:**
+
 * **Keyword Processing Server (Golang)**
   * Receives keyword queries from HTTP clients
   * Fetches relevant news article URLs using the free [NewsAPI](https://newsapi.org/)
