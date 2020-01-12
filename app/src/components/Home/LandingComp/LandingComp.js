@@ -11,7 +11,7 @@ function LandingComp() {
   return (
     <div className="landingCompContainer">
       <div className="titleContainter">
-        <div className="title">AggroNews <img src={NewsIcon} className="newsIcon"/></div>
+        <div className="title">NwFacts <img src={NewsIcon} className="newsIcon"/></div>
         <div className="titleDescriptor">Your Fake News Analyser!</div>
         
       </div>

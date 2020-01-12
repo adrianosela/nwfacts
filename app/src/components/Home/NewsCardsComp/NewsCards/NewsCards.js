@@ -17,11 +17,10 @@ class NewsCards extends React.Component {
     
     render() {
         let source = this.props.source;
-        console.log('\n\nsource', source)
         return (
             <div className="NewsCardContainer">
                 <div className="ImageContainer">
-                    <img src={source.imageUrl ? source.imageUrl : placeHolderIcon} alt="News source icon" className="NewsCardLogo" />
+                    <img src={placeHolderIcon} alt="News source icon" className="NewsCardLogo" />
                 </div>
                 <div className="NewsCardDetails">
                     <div className="NewsCardTitle">{source.title}</div>
