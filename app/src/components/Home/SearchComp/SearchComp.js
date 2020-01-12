@@ -14,7 +14,7 @@ class SearchComp extends React.Component {
                     </div>
                 </form>
                 <Button variant="contained" color="primary">
-                    <Link to='/webapp'><a className="searchButton">Go!</a></Link>
+                    <Link to='/app'><a className="searchButton">Go!</a></Link>
                 </Button>
         </div>
     }
