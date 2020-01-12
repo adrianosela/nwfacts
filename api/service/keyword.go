@@ -22,8 +22,8 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// get all news articles for query
-	data, err := s.NewsAPIClient.Everything(newsapi.Options{
+	// get top headlines articles for query
+	data, err := s.NewsAPIClient.TopHeadlines(newsapi.Options{
 		Language: "en",
 		Q:        strings.Join(keyword, " "),
 		SortBy:   "popularity",
@@ -33,6 +33,11 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(fmt.Sprintf("error getting everything for query: %s", err)))
 		return
 	}
+
+	// TODO: for every article, parse text
+	// TODO: for every parsed text, run NLP
+	// TODO: for every NLP result, build object around it and append to results array
+	// TODO: marshal results array instead of data object from newaspi response
 
 	// marshal response and return success
 	byt, err := json.Marshal(&data)
