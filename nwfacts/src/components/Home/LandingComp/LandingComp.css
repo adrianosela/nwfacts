@@ -46,11 +46,11 @@
     width: 50px;
 }
 
-/* .buttonWrapper{
+.buttonWrapper{
     display: flex;
     flex-flow: row wrap;
     padding: 100px 0px 0px 0px;  
-} */
+}
 /* 
 .loginButton{
     padding: 10px 30px;

@@ -1,0 +1,17 @@
+.webapp{
+    display: flex;
+    margin: 0;
+    color: #000;
+    background-color: blanchedalmond;
+    height: 100vh;
+}
+
+.appCL{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.appHL{
+    display: flex;
+    flex-flow: column nowrap;
+}

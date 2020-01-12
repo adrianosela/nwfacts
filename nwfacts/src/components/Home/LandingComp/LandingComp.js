@@ -13,6 +13,10 @@ function LandingComp() {
           <div className="title">AggroNews</div>
           <div className="titleDescriptor">Your News Aggregator!</div>
         </div>
+        <div className="buttonWrapper">
+            <Link to='/WEBAPP'><a className="loginButton">Go To Map</a></Link>
+            {/* <Link to='/' ><a className="signUpButton">Sign Up</a></Link> */}
+          </div> 
         <div className="searchBarComp" >
           <div className="spacerDiv1"></div>
           <div className='searchbar'>
