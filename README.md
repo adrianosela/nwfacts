@@ -30,6 +30,12 @@ Our final product is the result of the following secondary goals:
 
 ## Design Specification
 
+### **System Architecture Diagram:**
+
+![](./docs/diagrams/architecture.png)
+
+### **Components Specification:**
+
 * **Keyword Processing Server (Golang)**
   * Receives keyword queries from HTTP clients
   * Fetches relevant news article URLs using the free [NewsAPI](https://newsapi.org/)
@@ -43,15 +49,22 @@ Our final product is the result of the following secondary goals:
   * Styled cards where each card contains releavant metadata and bias-metrics for a single article
   * Processing results export-to-CSV functionality
 
-* **Article HTML-to-Text Parsing Cloud Function (Python)**
+* **Google Cloud Function: Article HTML-to-Text Parsing (Python)**
   * Receives a list of URLs from HTTP clients
   * Uses the [Newspaper3k](https://newspaper.readthedocs.io/en/latest/) library to extract body text from an article given its URL
   * Returns a populated map of URL-to-body (text of article) back to the client
 
-* **Processing Results Export Flow StdLib Function (NodeJS)**
-  * Receives a list of URLs from HTTP clients
-  * Uses the [Newspaper3k](https://newspaper.readthedocs.io/en/latest/) library to extract body text from an article given its URL
-  * Returns a populated map of URL-to-body (text of article) back to the client
+* **Serverless StdLib Function: Analytics-Export Flow (NodeJS)**
+  * Receives raw result data from an HTTP client, which is our web application
+  * Converts raw data onto a user-friendly CSV file
+  * A) AutoCode built-in Slack integration that publishes the CSV to Slack
+  * B) AutoCode custom integration for sending the CSV to a given email
+
+* **Serverless StdLib Function: Relevant Tweets Search (NodeJS)**
+  * Receives keywords to search for from an HTTP client
+  * Returns relevant tweets back to the client
+
+Note that our Golang server and React front-end are both hosted on Google App Engine.
 
 ## Means to Monetization
 

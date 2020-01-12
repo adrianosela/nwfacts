@@ -16,7 +16,9 @@ const Home = () => {
             <hr></hr>
             <Particles className="particles" params={particlesOptions}></Particles>
             <Fade delay="250">
-                <NewsCardsComp />
+                <div id="trending">
+                    <NewsCardsComp />
+                </div>
             </Fade>
             <hr></hr>
             <Fade delay="250">

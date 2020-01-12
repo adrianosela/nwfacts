@@ -1,7 +1,7 @@
     import React from 'react';
 
 import "./FeaturesComp.css"
-import IconTree from "../../../assets/Icon_Tree.png"
+import IconRecent from "../../../assets/news2Icon.png"
 import IconChart from "../../../assets/Icon_Chart.png"
 import IconAnalyze from "../../../assets/Icon_Analyze1.png"
 import TitleComp from '../TitleComp/TitleComp'
@@ -16,24 +16,24 @@ function FeaturesComp() {
             <div className="featuresCompBody">
                 <div className="featuresWrapper">
                     <div className="featuresImg">
-                        <img className="iconTree" src={IconTree} alt="icon image of tree" />
+                        <img className="iconTree" src={IconRecent} alt="icon image of tree" />
                     </div>
-                    <div className="featuresTitle">Identify Trees</div>
-                    <div className="featuresDescription">Pickout hidden trees in satallite and lidar immagery.</div>
+                    <div className="featuresTitle">Stay in The Loop</div>
+                    <div className="featuresDescription">Stay up to date with trending news on topics that interest you.</div>
                 </div>
                 <div className="featuresWrapper">
                     <div className="featuresImg">
                         <img className="iconTree" src={IconChart} alt="icon image of tree" />
                     </div>
-                    <div className="featuresTitle">Visualize Data</div>
-                    <div className="featuresDescription">Visualize all the tree data you didn't know you needed with charts that put excel to shame.</div>
+                    <div className="featuresTitle">Gain Insight on Bias</div>
+                    <div className="featuresDescription">Get insight on sentiment conveyed in articles and how biased it might be.</div>
                 </div>
                 <div className="featuresWrapper">
                     <div className="featuresImg">
                         <img className="iconTree" src={IconAnalyze} alt="icon image of tree" />
                     </div>
-                    <div className="featuresTitle">Analyze Data</div>
-                    <div className="featuresDescription">Out ML model will help you analyze the data better than any inter could. </div>
+                    <div className="featuresTitle">Export Data</div>
+                    <div className="featuresDescription">Export results to Slack or Email for later reference and easier sharing</div>
                 </div>
             </div>
         </div>        

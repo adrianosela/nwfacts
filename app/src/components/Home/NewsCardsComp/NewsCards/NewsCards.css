@@ -1,12 +1,14 @@
 .NewsCardContainer{
     display: flex;
     border-style: solid;
+    border-color: gray;
     border-width: 1px;
     border-radius: 1em;
-    padding: 20px;
-    width: fit-content;
-    margin-bottom: 20px;
-    box-shadow:  3px 1px 1px rgba(0, 0, 0, .5);
+    padding: 15px;
+    width: -moz-fit-content;
+    width: 100%;
+    margin-top: 20px;
+    /* box-shadow: 3px 1px 1px rgba(0, 0, 0, .5); */
     background-color: rgb(252, 252, 252);
 }
 
@@ -80,4 +82,8 @@
 
 .ImageContainer {
     margin: auto;
+}
+
+.qMarkTooltip {
+    width: 20px;
 }
