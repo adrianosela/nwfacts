@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import "./SearchFilterComp.css"
 import SearchComp from '../../Home/SearchComp/SearchComp'
 import SearchedCards from '../SearchFilterComp/SearchedCards/SearchedCards'
+import ExportButton from '../SearchFilterComp/ExportButton/ExportButton'
 
 import Button from '@material-ui/core/Button';
 
@@ -47,14 +48,20 @@ class SearchFilterComp extends Component{
     render() {
         return(
             <div className="SearchFilterCompContainer">
-                <div className="searchBar">
-                    <SearchComp />
+                <div className="divider">
+                    <div className="searchBar">
+                        <SearchComp />
+                    </div>
+                    <div className='exportButton'>
+                        <ExportButton />
+                    </div>
                 </div>
-                <div>
+                {/* <div className='exportButton'>
                     <Button variant="contained" color="primary" onClick={this.onGo}>
-                        Go!
+                        Export
                     </Button>
-                </div>
+                    <ExportButton onClick={this.onGo} />
+                </div> */}
                 <div className="searchResultsTitle">Search Results</div>
                 <div className="searchedCards"><SearchedCards results={this.props.results}/></div>
             </div>

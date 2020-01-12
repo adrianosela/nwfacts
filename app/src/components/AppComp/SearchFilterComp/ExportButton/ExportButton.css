@@ -1,0 +1,11 @@
+.slackAndEmailButton{
+    display: flex;
+}
+
+.emailForm{
+    margin: 10px;
+}
+
+.slackButton{
+    margin:10px;
+}

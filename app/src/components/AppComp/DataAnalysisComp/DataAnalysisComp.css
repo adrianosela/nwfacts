@@ -1,0 +1,6 @@
+.dataCompContainer{
+    display: flex;
+    font-size: 30px;
+    margin: 10px;
+    height: 100%;
+}
