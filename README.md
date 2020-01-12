@@ -68,4 +68,4 @@ Note that our Golang server and React front-end are both hosted on Google App En
 
 ## Means to Monetization
 
-The website [nwhacks.tech](https://nwhacks.tech) is and will remain free whenever it is running. Eventually we could consider adding premium account functionality with access to more computationally expensive machine learning.
+The website [nwfacts.tech](https://nwfacts.tech) is and will remain free whenever it is running. Eventually we could consider adding premium account functionality with access to more computationally expensive machine learning.
