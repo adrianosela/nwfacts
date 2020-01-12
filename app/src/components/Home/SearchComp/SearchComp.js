@@ -33,7 +33,7 @@ class SearchComp extends React.Component {
     render() {
         if(this.state.redirect) {
             return <Redirect to={{
-                pathname: '/webapp',
+                pathname: '/app',
                 state: { results: this.state.results, queryValue: this.state.queryValue }
               }} />
         } else {
