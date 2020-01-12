@@ -15,7 +15,7 @@ class SearchComp extends React.Component {
         if(!this.state.queryValue) {
             return;
         }
-        const res = await fetch(`/search?keyword=${this.state.queryValue}`, {
+        const res = await fetch(`https://api-dot-nwfacts.appspot.com/search?keyword=${this.state.queryValue}`, {
             method: 'GET',
             headers: {
               'Accept': 'application/json',

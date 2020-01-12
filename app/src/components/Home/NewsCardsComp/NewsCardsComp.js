@@ -11,7 +11,7 @@ class NewsCardsComp extends React.Component {
         this.init()
     }
     async init() {
-        const res = await fetch(`/search?keyword=Canada`, {
+        const res = await fetch(`https://api-dot-nwfacts.appspot.com/search?keyword=Canada`, {
             method: 'GET',
             headers: {
               'Accept': 'application/json',
