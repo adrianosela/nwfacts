@@ -5,30 +5,38 @@ import NewsCard from '../../../Home/NewsCardsComp/NewsCards/NewsCards'
 import imgGoogleIcon from '../../../../assets/googleIcon.svg'
 import TitleComp from '../../../Home/TitleComp/TitleComp'
 
+import ScrollArea from '@xico2k/react-scroll-area';
+
+
 class SearchedCards extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {ready: false}
-        this.init()
+        this.state = {ready: true}
+       // this.init()
     }
-    async init() {
-        const res = await fetch(`/search?keyword=Canada`, {
-            method: 'GET',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            }
-        });
-        const results = await res.json();
-        this.setState({ ready: true, results: results});
-        console.log(results)
-    }
+    // async init() {
+    //     const res = await fetch(`/search?keyword=Canada`, {
+    //         method: 'GET',
+    //         headers: {
+    //           'Accept': 'application/json',
+    //           'Content-Type': 'application/json'
+    //         }
+    //     });
+    //     const results = await res.json();
+    //     this.setState({ ready: true, results: results});
+    //     console.log(results)
+    // }
 
     renderNewsCards(results) {
+        console.log('ress', typeof results)
+        console.log(results)
         let ret = [];
-        results.forEach(res => 
-            ret.push(<NewsCard source={res} />)
-        )
+        results.forEach((res, i) => {
+            console.log('res', res)
+            ret.push(<NewsCard 
+                key={i}
+                source={res} />)
+        })
         return ret
     }
     render() {
@@ -39,7 +47,9 @@ class SearchedCards extends React.Component {
             return (
                 <div className="newsCardCompContainer">
                     <div className="newsCompBody">
-                        {this.renderNewsCards(this.state.results.results)}
+                        <ScrollArea>
+                            {this.renderNewsCards(this.props.results.results)}
+                        </ScrollArea>
                     </div>
                 </div>
             );

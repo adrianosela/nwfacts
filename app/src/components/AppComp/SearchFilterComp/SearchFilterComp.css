@@ -4,13 +4,13 @@
     color: bisque;
     /* width: 100%; */
     align-items: center;
-
+    height: 85%;
 }
 
 .searchBar{
     display: flex;
     padding: 20px 0 0 0;
-    height: 50%;
+    height: 10%;
 }
 
 .filter{

@@ -4,6 +4,7 @@
     align-items: center;
     flex-flow: row wrap;
     margin: inherit;
+    height: 100%;
     padding: 0 70px 0 70px;
 }
 
@@ -12,6 +13,11 @@
     justify-content: space-evenly;
     align-items: flex-start;
     flex-flow: row wrap;
+    height: 100%;
+}
+
+.searchedCards {
+  height: 90%;
 }
 
 .busySpinner {
