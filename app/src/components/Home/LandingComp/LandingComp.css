@@ -4,7 +4,7 @@
     justify-content: space-between;
     flex-flow: column wrap;
     /* align-items: flex-start; */
-    height:  90vh; 
+    height:  90vh;
     /* background-image: url(../../../assets/fakefact.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,7 +14,7 @@
     position: relative;
     left:0px;
     top:0px;
-    z-index:10; 
+    z-index:10;
 }
 .searchBarContainer {
     margin: auto;
@@ -29,35 +29,37 @@
 }
 
 .title{
-    /* font-weight: bold; */
-    font-size: 4em;
-    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 6em;
+    font-family: "Courier";
 }
 
 .titleDescriptor{
     font-display: 100%;
     padding: 50px 0 50px 0;
     font-weight: lighter;
-}   
+    font-family: "Courier";
+}
 
 .chevronContainer {
     margin-left: auto;
     margin-right: auto;
 }
 
-.chevronIcon, .newsIcon {
+.chevronIcon {
     width: 60px;
 }
 
 .newsIcon {
     width: 60px;
+    padding: 0 0 0 20px;
 }
 /* .buttonWrapper{
     display: flex;
     flex-flow: row wrap;
-    padding: 100px 0px 0px 0px;  
+    padding: 100px 0px 0px 0px;
 }
-/* 
+/*
 .loginButton{
     padding: 10px 30px;
     font-weight: bold;
@@ -66,8 +68,8 @@
     color: azure;
     background-color: rgb(65, 77, 78);
     margin: 0 30px 0 0px;
-    /* text-decoration: none; 
-    text-decoration-color: rgb(70, 247, 247);  
+    /* text-decoration: none;
+    text-decoration-color: rgb(70, 247, 247);
 
 }
 
