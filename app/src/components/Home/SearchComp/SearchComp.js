@@ -55,7 +55,7 @@ class SearchComp extends React.Component {
                         <TextField id="outlined-basic" label="Search News" variant="outlined" fullWidth="true" onChange={this.handleChange} />
                     </div>
                 </form>
-                <Button variant="contained" color="primary" onClick={this.onGo}>
+                <Button variant="contained" color="#284B63" onClick={this.onGo}>
                     Go!
             </Button>
             </div>
