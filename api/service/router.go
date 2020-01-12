@@ -1,18 +1,12 @@
 package service
 
 import (
-	"context"
 	"log"
-	"net/http"
 
 	"github.com/adrianosela/nwfacts/api/config"
+	"github.com/adrianosela/nwfacts/api/processing"
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
-
-	language "cloud.google.com/go/language/apiv1"
-
-	artparser "github.com/adrianosela/nwfacts/cloud-functions/newsparser/client"
-	newsapi "github.com/robtec/newsapi/api"
 )
 
 // Service holds the service configuration
@@ -21,35 +15,22 @@ type Service struct {
 	Router *mux.Router
 	config *config.Config
 
-	NewsAPIClient       *newsapi.Client
-	ArticleParserClient *artparser.Client
-	NLPClient           *language.Client
+	ProcessingEngine *processing.Engine
 }
 
 // NewFactsService returns an HTTP router multiplexer with
 // attached handler functions
 func NewFactsService(c *config.Config) *Service {
-	// news api gives us relevant news article URLs given keywords
-	newsAPIClient, err := newsapi.New(http.DefaultClient, c.NewsAPISettings.APIKey, c.NewsAPISettings.URL)
+	engine, err := processing.NewEngine(c, nil)
 	if err != nil {
-		log.Fatal(errors.Wrap(err, "could not get newsAPI client"))
-	}
-
-	// article parser gives us article text given article URL
-	articleParserClient := artparser.NewClient(c.ArticleParserSettings.URL)
-
-	// google ml engine nlp client gives us metrics given text
-	nlpClient, err := language.NewClient(context.Background())
-	if err != nil {
-		log.Fatal(errors.Wrap(err, "could not get Google Language client"))
+		log.Fatal(errors.Wrap(err, "could not initialize new processing engine"))
 	}
 
 	svc := &Service{
-		Router:              mux.NewRouter(),
-		config:              c,
-		NewsAPIClient:       newsAPIClient,
-		ArticleParserClient: articleParserClient,
-		NLPClient:           nlpClient,
+		Router:           mux.NewRouter(),
+		ProcessingEngine: engine,
+
+		config: c,
 	}
 
 	svc.addKeywordEndpoints()

@@ -1,12 +1,17 @@
 package processing
 
+// SearchResponse contains the response of a keyword search analysis
+type SearchResponse struct {
+	Results []Result `json:"results"`
+}
+
 // Result represents a processing result
 type Result struct {
 	// article metadata
+	URL         string `json:"url"` // note: treated as unique identifier
 	Source      string `json:"source"`
 	Title       string `json:"title"`
 	Description string `json:"description"`
-	URL         string `json:"url"`
 	ImgURL      string `json:"imgURL"`
 	PublishedAt string `json:"publishedAt"`
 	Author      string `json:"author,omitempty"`
