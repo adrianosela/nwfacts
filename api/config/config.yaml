@@ -4,3 +4,5 @@ server_settings:
 newsapi_settings:
     url: https://newsapi.org
     api_key: 12238e0ef2ed4615b2b8cf9b60a957ae
+articleparser_settings:
+    url: https://us-central1-nwfacts.cloudfunctions.net/ArticleParser
