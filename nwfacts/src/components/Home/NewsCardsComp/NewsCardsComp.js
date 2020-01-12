@@ -9,10 +9,28 @@ function NewsCardsComp() {
 
     const [ShowComp, setShowComp] = useState(0);
     const imgArray = [imgGoogleIcon];
-    const templateNewsItem = { imageUrl: "https://avatars0.githubusercontent.com/u/1342004?s=400&v=4", headline: "Mourners and protesters crowd Tehran's streets after Iran admits to downing jet",
-     srcName: "Google",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    url: "http://google.com"}
+    const templateNewsItem = {
+        source: "New York Magazine",
+        title: "Donald Trump Is the War Crimes President",
+        description: "His embrace of rogue Navy SEAL Eddie Gallagher is part of a deeper, and very alarming, pattern.",
+        url: "http://nymag.com/intelligencer/2020/01/andrew-sullivan-donald-trump-is-the-war-crimes-president.html",
+        publishedAt: "2020-01-10T17:07:29Z",
+        author: "Andrew Sullivan",
+        scores: {
+            categories: [
+                {
+                    name: "/Law \u0026 Government",
+                    confidence: 0.77
+                },
+                {
+                    name: "/Sensitive Subjects",
+                    confidence: 0.7
+                }
+            ],
+            sensationalism: 0.056985293,
+            sentiment: -0.1
+        }
+    }
     return (
         <div className="newsCardCompContainer">
             <TitleComp title="Trending"></TitleComp>

@@ -2,7 +2,7 @@ import React from 'react'
 import "./NewsCards.css";
 import Divider from '@material-ui/core/Divider';
 
-import Icon from "../../../../assets/googleIcon.svg"
+import placeHolderIcon from "../../../../assets/newsIcon.png"
 class NewsCards extends React.Component {
     render() {
         let source = this.props.source;
@@ -10,14 +10,14 @@ class NewsCards extends React.Component {
         return (
             <div className="NewsCardContainer">
                 <div className="ImageContainer">
-                    <img src={source.imageUrl} alt="News source icon" className="NewsCardLogo" />
+                    <img src={source.imageUrl ? source.imageUrl : placeHolderIcon} alt="News source icon" className="NewsCardLogo" />
                 </div>
                 <div className="NewsCardDetails">
-                    <div className="NewsCardTitle">{source.headline}</div>
-                    <div className="NewsCardSource">Source: {source.srcName}</div>
+                    <div className="NewsCardTitle">{source.title}</div>
+                    <div className="NewsCardSource">Source: {source.source}</div>
                     <Divider orientation="horizontal" />
-                    <div className="NewsCardDescription">{source.text}</div>
-                    <a href={source.url}>read more...</a>
+                    <div className="NewsCardDescription">{source.description}</div>
+                    <a href={source.url}>Full article here</a>
                 </div>
                 <div className="NewsCardDividerVertical">
                     <Divider orientation="vertical" />
