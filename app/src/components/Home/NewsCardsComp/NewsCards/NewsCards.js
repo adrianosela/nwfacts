@@ -15,7 +15,6 @@ class NewsCards extends React.Component {
     
     render() {
         let source = this.props.source;
-        console.log(source.imgURL)
         return (
             <div className="NewsCardContainer">
                 <div className="ImageContainer">

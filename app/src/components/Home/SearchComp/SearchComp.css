@@ -30,3 +30,7 @@
     /* display: flex; */
     width: 50px;
 }
+
+.busySpinner2 {
+    margin-right: 10px;
+  }
