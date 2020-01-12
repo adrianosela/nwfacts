@@ -30,13 +30,11 @@ func NewFactsService(c *config.Config) *Service {
 		log.Fatal(errors.Wrap(err, "could not get https://newsapi.org client"))
 	}
 
-	newsParserClient := artparser.NewClient(c.ArticleParserSettings.URL)
-
 	svc := &Service{
-		Router:           mux.NewRouter(),
-		config:           c,
-		NewsAPIClient:    newsAPIClient,
-		NewsParserClient: newsParserClient,
+		Router:              mux.NewRouter(),
+		config:              c,
+		NewsAPIClient:       newsAPIClient,
+		ArticleParserClient: artparser.NewClient(c.ArticleParserSettings.URL),
 	}
 
 	svc.addKeywordEndpoints()

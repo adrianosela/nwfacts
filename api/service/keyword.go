@@ -41,15 +41,15 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 	// sources i.e. CNN USA and CNN UK may share same URL for an article
 	visited := make(map[string]*newsapi.Article)
 	uniqueURLs := []string{} // array of no-dup urls
-	for article := range data.Articles {
+	for _, article := range data.Articles {
 		if _, ok := visited[article.URL]; !ok {
-			visited[article.URL] = article // mark visited
+			visited[article.URL] = &article // mark visited
 			uniqueURLs = append(uniqueURLs, article.URL)
 		}
 	}
 
 	// get article text given the URL
-	urlToBodyTextMap, err := s.ArticleParserClient.GetTextFromArticles(uniqueURLs)
+	urlToBodyTextMap, err := s.ArticleParserClient.GetTextFromArticles(uniqueURLs...)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(fmt.Sprintf("error getting text for articles: %s", err)))
@@ -65,7 +65,7 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 			Source:      article.Source.Name,
 			Title:       article.Title,
 			Description: article.Description,
-			URL:         article,
+			URL:         url,
 			PublishedAt: article.PublishedAt,
 			Author:      article.Author,
 			Scores:      scores,
