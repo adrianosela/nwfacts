@@ -13,7 +13,7 @@ const Home = () => {
             <Fade delay="250">
                 <LandingComp/>
             </Fade>
-            <hr></hr>
+            <hr className="hrr"></hr>
             <Particles className="particles" params={particlesOptions}></Particles>
             <Fade delay="250">
                 <div id="trending">

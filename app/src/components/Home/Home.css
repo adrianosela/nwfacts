@@ -16,6 +16,9 @@ hr {
     margin-bottom:80px;
     }
 
+.hrr {
+    margin-top: 6rem!important;
+}
 
 .particles {
     display: flex;
