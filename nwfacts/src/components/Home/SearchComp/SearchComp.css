@@ -19,6 +19,13 @@
     margin-right: 10px;
 }
 
+.searchButton{
+    color: aliceblue;
+    text-decoration: transparent;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .spacerDiv1{
     /* display: flex; */
     width: 50px;

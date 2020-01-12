@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import Button from '@material-ui/core/Button';
 import { Input, TextField } from '@material-ui/core'
 import "./SearchComp.css";
@@ -12,7 +14,7 @@ class SearchComp extends React.Component {
                     </div>
                 </form>
                 <Button variant="contained" color="primary">
-                        Go!
+                    <Link to='/WEBAPP'><a className="searchButton">Go!</a></Link>
                 </Button>
         </div>
     }
