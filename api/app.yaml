@@ -1,3 +1,4 @@
+service: api
 runtime: go113
 
 handlers:
