@@ -13,15 +13,17 @@
 }
 
 .searchResultsTitle{
+    align-self: flex-start;
+    padding-top: 30px;
+    margin-left: 55px;
     display: flex;
-    padding: 30px;
-    font-size: 30px;
+    color: rgb(77,80,85);
+    font-size: 27px;
     font-weight: bold;
-    text-decoration: underline;
 }
 
 .searchedCards{
-    background-color: #284B63;
+    background-color: rgb(247, 252, 251);
     z-index: 0;
     height: 90%;
     margin: 0 3vw 0;

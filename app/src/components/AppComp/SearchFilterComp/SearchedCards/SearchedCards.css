@@ -1,11 +1,12 @@
 .newsCardCompContainer1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: row wrap;
-    margin: 7px;
-    height: 100%;
-    padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  margin: 7px;
+  margin-top: 0;
+  height: 100%;
+  padding: 0;
 }
 
 .newsCompBody1{
