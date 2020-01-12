@@ -12,11 +12,14 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 20%;
-    width: 100%;
+    height: 15%;
+    font-weight: bold;
+    width: 100%;    
+    color: #ffffff;
+    background-color: #153243;
 }
 
 .twitterCard {
     width: 100%;
-    height: 80%;
+    height: 86%;
 }

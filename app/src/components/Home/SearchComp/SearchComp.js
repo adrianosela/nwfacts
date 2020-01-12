@@ -46,7 +46,7 @@ class SearchComp extends React.Component {
                 </div>
             </form>
             <Button variant="contained" color="primary" onClick={this.onGo}>
-                Go!
+                Go
             </Button>
             </div>
         }

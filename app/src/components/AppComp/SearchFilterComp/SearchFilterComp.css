@@ -8,7 +8,7 @@
 
 .searchBar{
     display: flex;
-    padding: 40px 0 10px 0;
+    padding: 35px 0 10px 0;
     height: 10%;
 }
 
@@ -23,7 +23,7 @@
 .searchedCards{
     background-color: #284B63;
     z-index: 0;
-    height: 90%;
+    height: 92%;
     margin: 0 3vw 0;
     border: 1px;
     border-style: solid;
