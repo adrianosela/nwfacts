@@ -63,10 +63,9 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 	resp := &payloads.SearchResponse{Results: []processing.Result{}}
 	for url, text := range urlToBodyTextMap {
 		article := visited[url]
-		scores := make(map[string]float32) // map of scoring func to score
+		scores := make(map[string]interface{}) // map of scoring func to score
 
-		// score the sentiment of the text
-		sentiment, err := s.NLPClient.AnalyzeSentiment(context.Background(), &languagepb.AnalyzeSentimentRequest{
+		analysis, err := s.NLPClient.AnnotateText(context.Background(), &languagepb.AnnotateTextRequest{
 			Document: &languagepb.Document{
 				Source: &languagepb.Document_Content{
 					Content: text,
@@ -74,12 +73,39 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 				Type: languagepb.Document_PLAIN_TEXT,
 			},
 			EncodingType: languagepb.EncodingType_UTF8,
+			Features: &languagepb.AnnotateTextRequest_Features{
+				// get likely text classifications with an associated confidence level
+				ClassifyText: true,
+				// get the overall sentiment of the whole document. A negative value
+				// implies negative sentiment/emotion, and a positive value implies
+				// positive sentiment/emotion (positive emotion)
+				ExtractDocumentSentiment: true,
+				// categorize all tokens in the text as a single part-of-speech
+				ExtractSyntax: true,
+			},
 		})
 		if err != nil {
 			log.Printf("Failed to analyze text: %s\n", err)
 			continue // soft fail
 		}
-		scores["sentiment"] = sentiment.DocumentSentiment.Score
+
+		// score the sensationalizm of the text as the ratio of tokens
+		// in the text that are adverbs, this is a value between 0.0 and 1.0
+		adv, all := 0, 0
+		for _, t := range analysis.Tokens {
+			if t.PartOfSpeech.Tag == languagepb.PartOfSpeech_ADV {
+				adv++
+			}
+			all++
+		}
+
+		scores["sentiment"] = analysis.DocumentSentiment.Score
+		if all != 0 {
+			scores["sensationalism"] = float32(adv) / float32(all)
+		} else {
+			scores["sensationalism"] = 0.0
+		}
+		scores["categories"] = analysis.Categories
 
 		resp.Results = append(resp.Results, processing.Result{
 			Source:      article.Source.Name,
