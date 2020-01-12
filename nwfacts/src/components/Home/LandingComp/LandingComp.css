@@ -3,9 +3,9 @@
     display: flex;
     justify-content: space-between;
     flex-flow: column wrap;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     height:  90vh; 
-    background-image: url(../../../assets/fakefact.jpg);
+    /* background-image: url(../../../assets/fakefact.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -16,15 +16,22 @@
     top:0px;
     z-index:10; 
 }
+.searchBarContainer {
+    margin: auto;
+}
 
 .titleContainter{
-    padding: 7vh 0 0 70px;
+    /* padding: 7vh 0 0 70px; */
     width: 90vw;
+    text-align: center;
+    margin: auto;
+    padding-top: 20px;
 }
 
 .title{
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 4em;
+    font-family: "Roboto", sans-serif;
 }
 
 .titleDescriptor{
@@ -33,20 +40,19 @@
     font-weight: lighter;
 }   
 
-.searchBarComp{
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    width: 100%;
-    margin: 0 0 100px 0;
+.chevronContainer {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.spacerDiv1{
-    /* display: flex; */
-    width: 50px;
+.chevronIcon, .newsIcon {
+    width: 60px;
 }
 
-.buttonWrapper{
+.newsIcon {
+    width: 60px;
+}
+/* .buttonWrapper{
     display: flex;
     flex-flow: row wrap;
     padding: 100px 0px 0px 0px;  

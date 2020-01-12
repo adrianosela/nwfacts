@@ -1,33 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import SearchBar from '../LandingComp/SearchBar/SearchBar'
 
+import SearchBar from '../LandingComp/SearchBar/SearchBar'
+import SearchComp from '../SearchComp/SearchComp'
 import "./LandingComp.css";
-import { Input, TextField } from '@material-ui/core'
+import Icon from "../../../assets/chevron.png"
+import NewsIcon from "../../../assets/newsIcon.png"
 
 function LandingComp() {
 
-    return (
-      <div className="landingCompContainer">
-        <div className="titleContainter"> 
-          <div className="title">AggroNews</div>
-          <div className="titleDescriptor">Your News Aggregator!</div>
-        </div>
-        <div className="buttonWrapper">
-            <Link to='/WEBAPP'><a className="loginButton">Go To Map</a></Link>
-            {/* <Link to='/' ><a className="signUpButton">Sign Up</a></Link> */}
-          </div> 
-        <div className="searchBarComp" >
-          <div className="spacerDiv1"></div>
-          <div className='searchbar'>
-            <form  noValidate autoComplete="off">   
-                <TextField id="outlined-basic" label="Search" variant="outlined" />
-            </form>
-          </div> 
-          <div className="spacerDiv1"></div>
-        </div>
+  return (
+    <div className="landingCompContainer">
+      <div className="titleContainter">
+        <div className="title">AggroNews <img src={NewsIcon} className="newsIcon"/></div>
+        <div className="titleDescriptor">Your Fake News Analyser!</div>
+        
       </div>
-    )
+      <div className="searchBarContainer">
+        <SearchComp></SearchComp>
+      </div>
+      <div className="chevronContainer">
+        <img src={Icon} className="chevronIcon"/>
+      </div>
+      
+    </div>
+  )
 }
 
 export default LandingComp;
