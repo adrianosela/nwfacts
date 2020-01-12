@@ -8,6 +8,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
 
+	artparser "github.com/adrianosela/nwfacts/cloud-functions/newsparser/client"
 	newsapi "github.com/robtec/newsapi/api"
 )
 
@@ -17,7 +18,8 @@ type Service struct {
 	Router *mux.Router
 	config *config.Config
 
-	NewsAPIClient *newsapi.Client
+	NewsAPIClient       *newsapi.Client
+	ArticleParserClient *artparser.Client
 }
 
 // NewFactsService returns an HTTP router multiplexer with
@@ -28,10 +30,13 @@ func NewFactsService(c *config.Config) *Service {
 		log.Fatal(errors.Wrap(err, "could not get https://newsapi.org client"))
 	}
 
+	newsParserClient := artparser.NewClient(c.ArticleParserSettings.URL)
+
 	svc := &Service{
-		Router:        mux.NewRouter(),
-		config:        c,
-		NewsAPIClient: newsAPIClient,
+		Router:           mux.NewRouter(),
+		config:           c,
+		NewsAPIClient:    newsAPIClient,
+		NewsParserClient: newsParserClient,
 	}
 
 	svc.addKeywordEndpoints()

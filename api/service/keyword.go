@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/adrianosela/nwfacts/api/payloads"
+	"github.com/adrianosela/nwfacts/api/processing"
 	newsapi "github.com/robtec/newsapi/api"
 )
 
@@ -34,13 +36,44 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// TODO: for every article, parse text
-	// TODO: for every parsed text, run NLP
-	// TODO: for every NLP result, build object around it and append to results array
-	// TODO: marshal results array instead of data object from newaspi response
+	// deduplicate gotten articles (by URL as key).
+	// we do this because sometimes we get the same article URL from different
+	// sources i.e. CNN USA and CNN UK may share same URL for an article
+	visited := make(map[string]*newsapi.Article)
+	uniqueURLs := []string{} // array of no-dup urls
+	for article := range data.Articles {
+		if _, ok := visited[article.URL]; !ok {
+			visited[article.URL] = article // mark visited
+			uniqueURLs = append(uniqueURLs, article.URL)
+		}
+	}
+
+	// get article text given the URL
+	urlToBodyTextMap, err := s.ArticleParserClient.GetTextFromArticles(uniqueURLs)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte(fmt.Sprintf("error getting text for articles: %s", err)))
+		return
+	}
+
+	// populate response object while scoring each text
+	resp := &payloads.SearchResponse{Results: []processing.Result{}}
+	for url, body := range urlToBodyTextMap {
+		article := visited[url]
+		scores := score(body)
+		resp.Results = append(resp.Results, processing.Result{
+			Source:      article.Source.Name,
+			Title:       article.Title,
+			Description: article.Description,
+			URL:         article,
+			PublishedAt: article.PublishedAt,
+			Author:      article.Author,
+			Scores:      scores,
+		})
+	}
 
 	// marshal response and return success
-	byt, err := json.Marshal(&data)
+	byt, err := json.Marshal(&resp)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(fmt.Sprintf("could not marshal json: %s", err)))
@@ -49,4 +82,9 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write(byt)
 	return
+}
+
+func score(text string) map[string]int {
+	// placeholder func
+	return nil
 }

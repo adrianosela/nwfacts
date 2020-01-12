@@ -23,19 +23,25 @@ type Config struct {
 		URL    string `yaml:"url"`
 		APIKey string `yaml:"api_key"`
 	} `yaml:"newsapi_settings"`
+	ArticleParserSettings struct {
+		URL string `yaml:"url"`
+	} `yaml:"articleparser_settings"`
 }
 
 // BuildConfig returns a populated config struct from a yaml file
 func BuildConfig(filePath, version string) *Config {
 	config := configFromYaml(filePath)
+
+	config.ServerSettings.DeployTime = time.Now()
+	config.ServerSettings.Version = version
+
 	// When running on Google App Engine, the PORT env
 	// variable is set by the runtime. If set, we will
 	// serve on the port specified there.
 	if port := os.Getenv("PORT"); port != "" {
 		config.ServerSettings.Port = fmt.Sprintf(":%s", port)
 	}
-	config.ServerSettings.DeployTime = time.Now()
-	config.ServerSettings.Version = version
+
 	return config
 }
 
