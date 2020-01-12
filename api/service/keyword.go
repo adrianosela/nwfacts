@@ -89,6 +89,11 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 			continue // soft fail
 		}
 
+		cleanUpCategories(analysis.Categories)
+		scores["categories"] = analysis.Categories
+
+		scores["sentiment"] = analysis.DocumentSentiment.Score
+
 		// score the sensationalizm of the text as the ratio of tokens
 		// in the text that are adverbs, this is a value between 0.0 and 1.0
 		adv, all := 0, 0
@@ -99,13 +104,10 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 			all++
 		}
 
-		scores["sentiment"] = analysis.DocumentSentiment.Score
+		scores["sensationalism"] = 0.0
 		if all != 0 {
 			scores["sensationalism"] = float32(adv) / float32(all)
-		} else {
-			scores["sensationalism"] = 0.0
 		}
-		scores["categories"] = analysis.Categories
 
 		resp.Results = append(resp.Results, processing.Result{
 			Source:      article.Source.Name,
@@ -114,6 +116,7 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 			PublishedAt: article.PublishedAt,
 			Author:      article.Author,
 			URL:         article.URL,
+			ImgURL:      article.URLToImage,
 			Scores:      scores,
 		})
 	}
@@ -130,7 +133,10 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-func score(text string) map[string]int {
-
-	return nil
+// cleanUpCategories removes any start-of-string forward slash '/', and replaces
+// any additional forward slashes '/' with ', '
+func cleanUpCategories(categories []*languagepb.ClassificationCategory) {
+	for _, category := range categories {
+		category.Name = strings.Replace(strings.TrimPrefix(category.GetName(), "/"), "/", ", ", -1)
+	}
 }

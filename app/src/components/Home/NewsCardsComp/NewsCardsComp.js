@@ -1,48 +1,54 @@
 import React, { useState } from 'react'
 import "./NewsCardsComp.css";
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 import NewsCard from './NewsCards/NewsCards'
 import imgGoogleIcon from '../../../assets/googleIcon.svg'
 import TitleComp from '../TitleComp/TitleComp'
-
-function NewsCardsComp() {
-
-    const [ShowComp, setShowComp] = useState(0);
-    const imgArray = [imgGoogleIcon];
-    const templateNewsItem = {
-        source: "New York Magazine",
-        title: "Donald Trump Is the War Crimes President",
-        description: "His embrace of rogue Navy SEAL Eddie Gallagher is part of a deeper, and very alarming, pattern.",
-        url: "http://nymag.com/intelligencer/2020/01/andrew-sullivan-donald-trump-is-the-war-crimes-president.html",
-        publishedAt: "2020-01-10T17:07:29Z",
-        author: "Andrew Sullivan",
-        scores: {
-            categories: [
-                {
-                    name: "/Law \u0026 Government",
-                    confidence: 0.77
-                },
-                {
-                    name: "/Sensitive Subjects",
-                    confidence: 0.7
-                }
-            ],
-            sensationalism: 0.056985293,
-            sentiment: -0.1
-        }
+class NewsCardsComp extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {ready: false}
+        this.init()
     }
-    return (
-        <div className="newsCardCompContainer">
-            <TitleComp title="Trending"></TitleComp>
-            <div className="newsCompBody">
-                <NewsCard source={templateNewsItem} />
-                <NewsCard source={templateNewsItem} />
-                <NewsCard source={templateNewsItem} />
-                <NewsCard source={templateNewsItem} />
-            </div>
-        </div>
-    );
+    async init() {
+        const res = await fetch(`/search?keyword=Canada`, {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            }
+        });
+        const results = await res.json();
+        this.setState({ ready: true, results: results});
+        console.log(results)
+    }
+
+    renderNewsCards(results) {
+        let ret = [];
+        results.forEach(res => 
+            ret.push(<NewsCard source={res} />)
+        )
+        return ret
+    }
+    render() {
+        if(!this.state.ready) {
+            return <div className="busySpinner">
+                    <CircularProgress />
+                </div>
+        } else {
+            return (
+                <div className="newsCardCompContainer">
+                    <TitleComp title="Trending"></TitleComp>
+                    <div className="newsCompBody">
+                        {this.renderNewsCards(this.state.results.results)}
+                    </div>
+                </div>
+            );
+        }
+        
+    }
 }
+
 
 export default NewsCardsComp;
 

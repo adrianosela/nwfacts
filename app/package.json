@@ -2,6 +2,7 @@
   "name": "nwfacts",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://api-dot-nwfacts.appspot.com",
   "dependencies": {
     "@material-ui/core": "^4.8.3",
     "@testing-library/jest-dom": "^4.2.4",
