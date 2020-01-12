@@ -39,11 +39,11 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 	// deduplicate gotten articles (by URL as key).
 	// we do this because sometimes we get the same article URL from different
 	// sources i.e. CNN USA and CNN UK may share same URL for an article
-	visited := make(map[string]*newsapi.Article)
+	visited := make(map[string]newsapi.Article)
 	uniqueURLs := []string{} // array of no-dup urls
 	for _, article := range data.Articles {
 		if _, ok := visited[article.URL]; !ok {
-			visited[article.URL] = &article // mark visited
+			visited[article.URL] = article // mark visited
 			uniqueURLs = append(uniqueURLs, article.URL)
 		}
 	}
