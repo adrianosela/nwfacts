@@ -18,26 +18,32 @@ class NewsCards extends React.Component {
     }
 
     getSentimentGraph = (score) => {
-        if (score > 0) {
-            return <ProgressBar animated variant="warning" now={Math.abs(score*100)} />
+        let magnitude = Math.abs(score*100);
+        if (magnitude > 75) {
+            return <ProgressBar variant="danger" now={magnitude} />
         }
-        else {
-            return <ProgressBar animated variant="danger" now={Math.abs(score*100)} />
+        else if (magnitude > 50) {
+            return <ProgressBar variant="warning" now={magnitude} />
+        }
+        else if (magnitude > 25) {
+            return <ProgressBar variant="info" now={magnitude} />
+        } else {
+            return <ProgressBar variant="success" now={magnitude} />
         }
     }
 
     getSensationalismGraph = (score) => {
-        if (score < 0.01) {
-            return <ProgressBar animated variant="success" now={Math.abs(score*1000)} />
+        if (score > 0.075) {
+            return <ProgressBar max={0.1} variant="danger" now={score} />
         }
-        else if (score < 0.05) {
-            return <ProgressBar animated variant="info" now={Math.abs(score*1000)} />
+        else if (score > 0.05) {
+            return <ProgressBar max={0.1} variant="warning" now={score} />
         }
-        else if (score < 0.08) {
-            return <ProgressBar animated variant="warning" now={Math.abs(score*1000)} />
+        else if (score > 0.025) {
+            return <ProgressBar max={0.1} variant="info" now={score} />
         }
         else {
-            return <ProgressBar animated variant="danger" now={Math.abs(score*1000)} />
+            return <ProgressBar max={0.1} variant="success" now={score} />
         }
     }
 
@@ -67,7 +73,7 @@ class NewsCards extends React.Component {
                     <Divider orientation="horizontal" />
                     <div className="MetricsContent">
                         <ul>
-                            <li>Sensationalism: {source.scores.sensationalism}</li>
+                            <li>Sensationalism: {Number(source.scores.sensationalism * 10).toFixed(4)}</li>
                             {this.getSensationalismGraph(source.scores.sensationalism)}
                             <li>Sentiment: {source.scores.sentiment}</li>
                             {this.getSentimentGraph(source.scores.sentiment)}
