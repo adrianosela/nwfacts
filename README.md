@@ -24,7 +24,7 @@ Our final product is the result of the following secondary goals:
 	* [StdLib](https://stdlib.com/)'s AutoCode feature (in beta testing at the moment)
 	* Google Cloud Platform's [Cloud Functions](https://cloud.google.com/functions/)
 	* Google Cloud Platform's [Natural Language](https://cloud.google.com/natural-language/) processing
-	* Delegating and managing DNS multiple domains from [Domain.com](https://domain.com)
+	* Delegating and managing DNS for multiple domains with [Domain.com](https://domain.com)
 * Leverage team members' (very distinct) skills without having to settle for a single programming language by employing a microservice-like architecture, where different components are fully isolated and modular
 * Take a shot at winning prizes! We have focused on featured challenges from Google Cloud, StdLib, and Domain.com
 
