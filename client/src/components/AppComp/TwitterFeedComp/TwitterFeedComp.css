@@ -1,8 +1,0 @@
-.TwitterFeedCompContainer{
-    display: flex;
-    justify-content: space-between;
-    flex-flow: column wrap;
-    align-items: flex-start;
-    height:  90vh; 
-    background-color: red;
-}
