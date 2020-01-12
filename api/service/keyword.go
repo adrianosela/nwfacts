@@ -1,14 +1,17 @@
 package service
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"strings"
 
 	"github.com/adrianosela/nwfacts/api/payloads"
 	"github.com/adrianosela/nwfacts/api/processing"
 	newsapi "github.com/robtec/newsapi/api"
+	languagepb "google.golang.org/genproto/googleapis/cloud/language/v1"
 )
 
 func (s *Service) addKeywordEndpoints() {
@@ -58,16 +61,33 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 
 	// populate response object while scoring each text
 	resp := &payloads.SearchResponse{Results: []processing.Result{}}
-	for url, body := range urlToBodyTextMap {
+	for url, text := range urlToBodyTextMap {
 		article := visited[url]
-		scores := score(body)
+		scores := make(map[string]float32) // map of scoring func to score
+
+		// score the sentiment of the text
+		sentiment, err := s.NLPClient.AnalyzeSentiment(context.Background(), &languagepb.AnalyzeSentimentRequest{
+			Document: &languagepb.Document{
+				Source: &languagepb.Document_Content{
+					Content: text,
+				},
+				Type: languagepb.Document_PLAIN_TEXT,
+			},
+			EncodingType: languagepb.EncodingType_UTF8,
+		})
+		if err != nil {
+			log.Printf("Failed to analyze text: %s\n", err)
+			continue // soft fail
+		}
+		scores["sentiment"] = sentiment.DocumentSentiment.Score
+
 		resp.Results = append(resp.Results, processing.Result{
 			Source:      article.Source.Name,
 			Title:       article.Title,
 			Description: article.Description,
-			URL:         url,
 			PublishedAt: article.PublishedAt,
 			Author:      article.Author,
+			URL:         article.URL,
 			Scores:      scores,
 		})
 	}
@@ -85,6 +105,6 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func score(text string) map[string]int {
-	// placeholder func
+
 	return nil
 }
