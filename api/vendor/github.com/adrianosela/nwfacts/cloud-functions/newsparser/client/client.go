@@ -3,47 +3,68 @@ package client
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
-	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/pkg/errors"
 )
 
-const FUNCTION_URL = "https://us-central1-nwfacts.cloudfunctions.net/ArticleParser"
+// Client is a client for the newsparser cloud function
+type Client struct {
+	URL   string
+	Cache map[string]string
+}
 
-// Function that returns a map of URLs to Text Content
-// takes an array of urls and then makes a request to a service to get
-// the text content of articles from provided urls
-func GetTextFromArticles(urls []string) (map[string]string, error) {
-	if len(urls) == 0 {
-		return nil, errors.New("Empty URLs array")
+// NewClient is the constructor for the Client
+func NewClient(host string) *Client {
+	return &Client{
+		URL:   host,
+		Cache: make(map[string]string),
+	}
+}
+
+type payload struct {
+	URLs []string `json:"urls"`
+}
+
+// GetTextFromArticles returns a map of article URL to the text contained in it
+func (c *Client) GetTextFromArticles(urls ...string) (map[string]string, error) {
+	cached := make(map[string]string)
+	uncached := []string{}
+
+	for _, url := range urls {
+		if data, ok := c.Cache[url]; ok {
+			cached[url] = data
+		} else {
+			uncached = append(uncached, url)
+		}
 	}
 
-	urlmap := struct {
-		URLs string `json:"urls"`
-	}{URLs: urls}
-
-	jsonUrls, err := json.Marshal(&urlmap)
+	byt, err := json.Marshal(&payload{URLs: uncached})
 	if err != nil {
-		fmt.Println(err)
-		return nil, errors.New(fmt.Sprintf("JSON could not be generated, %v", err))
+		return nil, errors.Wrap(err, "could not marshal json payload")
 	}
-	res, err := http.Post(FUNCTION_URL, "application/json", bytes.NewBuffer(jsonUrls))
-	if err != nil {
-		fmt.Println(err)
-		return nil, errors.New("Error in http request")
-	}
-	body, err := ioutil.ReadAll(res.Body)
 
+	res, err := http.Post(c.URL, "application/json", bytes.NewBuffer(byt))
 	if err != nil {
-		fmt.Println(err)
-		return nil, errors.New("Error in reading response body")
+		return nil, errors.Wrap(err, "could not make http request")
 	}
-	var returnedUrlsMap map[string]string
 	defer res.Body.Close()
-	err = json.Unmarshal([]byte(body), &returnedUrlsMap)
+
+	bodyByt, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return nil, errors.New("Error in reading response from JSON")
+		return nil, errors.Wrap(err, "could not read response body")
 	}
-	return returnedUrlsMap, nil
+
+	var urlToBodyMap map[string]string
+	if err = json.Unmarshal(bodyByt, &urlToBodyMap); err != nil {
+		return nil, errors.Wrap(err, "could not unmarshal response")
+	}
+
+	// joined returned data with cached data
+	for url, data := range cached {
+		urlToBodyMap[url] = data
+	}
+
+	return urlToBodyMap, nil
 }

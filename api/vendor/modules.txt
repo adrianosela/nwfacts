@@ -1,4 +1,4 @@
-# github.com/adrianosela/nwfacts v0.0.0-20200112023951-23221c47bb5f
+# github.com/adrianosela/nwfacts v0.0.0-20200112035134-a5c48f6b3857
 github.com/adrianosela/nwfacts/cloud-functions/newsparser/client
 # github.com/gorilla/mux v1.7.3
 github.com/gorilla/mux
