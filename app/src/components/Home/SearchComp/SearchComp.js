@@ -49,14 +49,13 @@ class SearchComp extends React.Component {
             }} />
         } else {
             return <div className="searchBarComp" >
-                {this.renderBusySpinner()}
-                <form noValidate autoComplete="off" className="searchBoxContainer">
-                    <div className="searchBox">
-                        <TextField id="outlined-basic" label="Search News" variant="outlined" fullWidth="true" onChange={this.handleChange} />
-                    </div>
-                </form>
-                <Button variant="contained" color="primary" onClick={this.onGo}>
-                    Go!
+            <form noValidate autoComplete="off" className="searchBoxContainer">
+                <div className="searchBox">
+                    <TextField id="outlined-basic" label="Search News" variant="outlined" fullWidth="true"  onChange={this.handleChange}/>
+                </div>
+            </form>
+            <Button variant="contained" color="primary" onClick={this.onGo}>
+                Go
             </Button>
             </div>
         }
