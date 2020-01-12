@@ -25,11 +25,13 @@
     width: 90vw;
     text-align: center;
     margin: auto;
+    padding-top: 20px;
 }
 
 .title{
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 4em;
+    font-family: "Roboto", sans-serif;
 }
 
 .titleDescriptor{
@@ -43,7 +45,11 @@
     margin-right: auto;
 }
 
-.chevronIcon {
+.chevronIcon, .newsIcon {
+    width: 60px;
+}
+
+.newsIcon {
     width: 60px;
 }
 /* .buttonWrapper{
