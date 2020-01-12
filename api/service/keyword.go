@@ -11,6 +11,9 @@ func (s *Service) addKeywordEndpoints() {
 }
 
 func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
+	// allow CORS
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	// parse keywords from get param
 	keyword, ok := r.URL.Query()["keyword"]
 	if !ok {

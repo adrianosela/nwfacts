@@ -88,6 +88,11 @@ func (e *Engine) ProcessKeywords(kw []string) (*SearchResponse, error) {
 	// populate response object while scoring each text
 	resp := &SearchResponse{Results: []Result{}}
 	for url, text := range urlToBodyTextMap {
+		if cached, ok := e.ResultCache.getResult(url); ok {
+			resp.Results = append(resp.Results, *cached)
+			continue
+		}
+
 		article := visited[url]
 		scores := make(map[string]interface{}) // map of scoring func to score
 
@@ -135,7 +140,7 @@ func (e *Engine) ProcessKeywords(kw []string) (*SearchResponse, error) {
 			scores["sensationalism"] = float32(adv) / float32(all)
 		}
 
-		resp.Results = append(resp.Results, Result{
+		currentResult := Result{
 			Source:      article.Source.Name,
 			Title:       article.Title,
 			Description: article.Description,
@@ -144,7 +149,10 @@ func (e *Engine) ProcessKeywords(kw []string) (*SearchResponse, error) {
 			URL:         article.URL,
 			ImgURL:      article.URLToImage,
 			Scores:      scores,
-		})
+		}
+
+		e.ResultCache.putResult(currentResult.URL, &currentResult)
+		resp.Results = append(resp.Results, currentResult)
 	}
 
 	return resp, nil
