@@ -61,7 +61,12 @@ func (c *Client) GetTextFromArticles(urls ...string) (map[string]string, error) 
 		return nil, errors.Wrap(err, "could not unmarshal response")
 	}
 
-	// joined returned data with cached data
+	// add returned data to cache
+	for url, data := range urlToBodyMap {
+		c.Cache[url] = data
+	}
+
+	// join returned data with cached data
 	for url, data := range cached {
 		urlToBodyMap[url] = data
 	}
