@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import "./ExportButton.css"
 
 const useStyles = makeStyles(theme => ({
     modal: {
@@ -51,12 +52,9 @@ export default function TransitionsModal() {
                     <div className={classes.paper}>
                         <h3 id="transition-modal-title">Export Options</h3>
                         <div className='slackAndEmailButton'>
-                        <button className="slackButton" type="button" onClick={handleOpen}>Slack</button>
                         <form className="emailForm">
-                            <label>
-                                Email:
-                    <input type="text" name="name" />
-                            </label>
+                            <input className="slackLabel" type="radio" name="gender" value="male" /><label >Slack</label><br></br>
+                            <label>Email: <input type="text" name="name" /></label><br />
                             <input type="submit" value="Submit" />
                         </form>
                     </div>
