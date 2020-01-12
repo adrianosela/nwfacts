@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-flow: row wrap;
-    margin: inherit;
+    margin: 7px;
     height: 100%;
     padding: 0;
 }
