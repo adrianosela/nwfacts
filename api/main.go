@@ -16,7 +16,9 @@ var (
 
 func main() {
 	c := config.BuildConfig(filePath, version)
+
 	svc := service.NewFactsService(c)
+
 	if err := http.ListenAndServe(c.ServerSettings.Port, svc.Router); err != nil {
 		log.Fatal(err)
 	}
