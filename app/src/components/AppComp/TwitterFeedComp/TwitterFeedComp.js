@@ -41,7 +41,7 @@ class TwitterFeedComp extends Component{
     render () {
         return (
             <div className="TwitterFeedCompContainer">
-            <div className="title">Twitter</div>
+            <div className="title1">Twitter</div>
                 <div className="twitterCard">
                     <ScrollArea>
                         {loop(this.state.tweets)}
