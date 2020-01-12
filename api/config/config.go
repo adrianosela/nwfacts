@@ -19,6 +19,10 @@ type Config struct {
 		Version    string // server git hash
 		DeployTime time.Time
 	} `yaml:"server_settings"`
+	NewsAPISettings struct {
+		URL    string `yaml:"url"`
+		APIKey string `yaml:"api_key"`
+	} `yaml:"newsapi_settings"`
 }
 
 // BuildConfig returns a populated config struct from a yaml file
