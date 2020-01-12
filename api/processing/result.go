@@ -10,5 +10,5 @@ type Result struct {
 	PublishedAt string `json:"publishedAt"`
 	Author      string `json:"author,omitempty"`
 	// article scores for different named scoring functions
-	Scores map[string]float32 `json:"scores"`
+	Scores map[string]interface{} `json:"scores"`
 }
