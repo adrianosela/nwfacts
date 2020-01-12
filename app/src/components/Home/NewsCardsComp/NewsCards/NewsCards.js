@@ -52,7 +52,7 @@ class NewsCards extends React.Component {
     generateSensationalTooltip(source) {
         return <div>
             Sensationalism:
-            <Tooltip title="Sensationalism is Sentiment is lorem ipsum lorem ipsum despula argula blabla ila">
+            <Tooltip title="Sensationalism refers to the use of exciting or shocking language at the expense of accuracy to provoke public interest. This measurement is related to the ratio of adverbs to all other parts of speech in a piece of text. Values close to zero are desireable for this metric.">
                 <img src={qMarkIcon} className="qMarkTooltip" />
             </Tooltip>
             {Number(source.scores.sensationalism * 10).toFixed(4)}
@@ -62,7 +62,7 @@ class NewsCards extends React.Component {
     generateSentimentTooltip(source) {
         return <div>
             Sentiment:
-            <Tooltip title="Sentiment is lorem ipsum lorem ipsum despula argula blabla ila">
+            <Tooltip title="Sentiment has a value between -1.0 and 1.0 where more negative values are associated with negative sentiment (or feelings) and more positive values with a positive sentiment (or feelings). Values close to zero are desireable for this metric.">
                 <img src={qMarkIcon} className="qMarkTooltip" />
             </Tooltip>
             {source.scores.sentiment}
