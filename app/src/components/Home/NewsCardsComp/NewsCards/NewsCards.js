@@ -6,13 +6,15 @@ import placeHolderIcon from "../../../../assets/newsIcon.png"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+import Tooltip from '@material-ui/core/Tooltip';
+import qMarkIcon from "../../../../assets/qMark.png"
 class NewsCards extends React.Component {
 
     getCategories = (cats) => {
-        if (!cats) {return}
+        if (!cats) { return }
         let res = ""
-        for(var i=0; i<cats.length; i++) {
-            res += cats[i].name + (i != cats.length-1 ?  ", " : "")
+        for (var i = 0; i < cats.length; i++) {
+            res += cats[i].name + (i != cats.length - 1 ? ", " : "")
         }
         return "Categories: " + res
     }
@@ -47,6 +49,26 @@ class NewsCards extends React.Component {
         }
     }
 
+    generateSensationalTooltip(source) {
+        return <div>
+            Sensationalism:
+            <Tooltip title="Sensationalism is Sentiment is lorem ipsum lorem ipsum despula argula blabla ila">
+                <img src={qMarkIcon} className="qMarkTooltip" />
+            </Tooltip>
+            {Number(source.scores.sensationalism * 10).toFixed(4)}
+        </div>
+    }
+
+    generateSentimentTooltip(source) {
+        return <div>
+            Sentiment:
+            <Tooltip title="Sentiment is lorem ipsum lorem ipsum despula argula blabla ila">
+                <img src={qMarkIcon} className="qMarkTooltip" />
+            </Tooltip>
+            {source.scores.sentiment}
+        </div>
+    }
+
     render() {
         let source = this.props.source;
         return (
@@ -73,9 +95,9 @@ class NewsCards extends React.Component {
                     <Divider orientation="horizontal" />
                     <div className="MetricsContent">
                         <ul>
-                            <li>Sensationalism: {Number(source.scores.sensationalism * 10).toFixed(4)}</li>
+                            <li>{this.generateSensationalTooltip(source)}</li>
                             {this.getSensationalismGraph(source.scores.sensationalism)}
-                            <li>Sentiment: {source.scores.sentiment}</li>
+                            <li>{this.generateSentimentTooltip(source)}</li>
                             {this.getSentimentGraph(source.scores.sentiment)}
                         </ul>
                     </div>
