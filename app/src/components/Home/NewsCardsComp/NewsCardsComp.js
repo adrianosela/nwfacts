@@ -4,6 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import NewsCard from './NewsCards/NewsCards'
 import imgGoogleIcon from '../../../assets/googleIcon.svg'
 import TitleComp from '../TitleComp/TitleComp'
+
 class NewsCardsComp extends React.Component {
     constructor(props) {
         super(props)
@@ -25,7 +26,7 @@ class NewsCardsComp extends React.Component {
 
     renderNewsCards(results) {
         let ret = [];
-        results.forEach(res => 
+        results.forEach(res =>
             ret.push(<NewsCard source={res} />)
         )
         return ret
@@ -45,7 +46,7 @@ class NewsCardsComp extends React.Component {
                 </div>
             );
         }
-        
+
     }
 }
 
