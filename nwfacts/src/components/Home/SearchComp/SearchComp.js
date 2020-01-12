@@ -8,12 +8,12 @@ class SearchComp extends React.Component {
         return <div className="searchBarComp" >
                 <form noValidate autoComplete="off" className="searchBoxContainer">
                     <div className="searchBox">
-                        <TextField id="outlined-basic" label="Search" variant="outlined" fullWidth="true" />
+                        <TextField id="outlined-basic" label="Search News" variant="outlined" fullWidth="true" />
                     </div>
                 </form>
                 <Button variant="contained" color="primary">
                         Go!
-                    </Button>
+                </Button>
         </div>
     }
 }

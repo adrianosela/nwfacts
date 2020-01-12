@@ -11,7 +11,7 @@
     width: 100%;
 }
 .searchBox {
-    min-width: 75%;
+    min-width: 500px;
 }
 
 .searchBoxContainer {
