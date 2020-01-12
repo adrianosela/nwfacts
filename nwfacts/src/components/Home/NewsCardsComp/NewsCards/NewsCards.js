@@ -4,6 +4,15 @@ import Divider from '@material-ui/core/Divider';
 
 import placeHolderIcon from "../../../../assets/newsIcon.png"
 class NewsCards extends React.Component {
+    
+    getCategories = (cats) => {
+        let res = ""
+        for(var i=0; i<cats.length; i++) {
+            res += cats[i].name + (i != cats.length-1 ?  ", " : "")
+        }
+        return res
+    }
+    
     render() {
         let source = this.props.source;
         console.log(source.imageUrl)
@@ -29,12 +38,12 @@ class NewsCards extends React.Component {
                     <Divider orientation="horizontal" />
                     <div className="MetricsContent">
                         <ul>
-                            <li>Sentiment: Happy</li>
-                            <li>Adverb use: Heavy</li>
-                            <li>Overall Bias Score: 10/10</li>
+                            <li>Sensationalism: {source.scores.sensationalism}</li>
+                            <li>Sentiment: {source.scores.sentiment}</li>
+                            <li>Categories: {this.getCategories(source.scores.categories)}</li>
                         </ul>
                         <div className="NewsCardNote">
-                            Note: Overall Bias score is based on several metrics including the ones displayed above. Values range from 0-10, 10 being heavily biased 0 being neutral.
+                            Note: Lorem Ipsum fkshadk khfsdkajfhs khfsdkhfsda fhsdakhfsa
                         </div>
                     </div>
                 </div>
