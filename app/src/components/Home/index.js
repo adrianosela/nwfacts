@@ -8,17 +8,17 @@ import FeaturesComp from './FeaturesComp/FeaturesComp';
 import NewsCardsComp from './NewsCardsComp/NewsCardsComp';
 
 const Home = () => {
-    return (        
+    return (
         <div>
             <Fade delay="250">
                 <LandingComp/>
             </Fade>
             <hr></hr>
-            <Particles className="particles" params={particlesOptions}></Particles>    
+            <Particles className="particles" params={particlesOptions}></Particles>
             <Fade delay="250">
                 <NewsCardsComp />
             </Fade>
-            <hr></hr> 
+            <hr></hr>
             <Fade delay="250">
                 <FeaturesComp />
             </Fade>
@@ -32,7 +32,7 @@ export default Home;
 const particlesOptions={
     "particles":{
         "number":{
-            "value":80,
+            "value":100,
             "density":{
                 "enable":true,
                 "value_area":1500
