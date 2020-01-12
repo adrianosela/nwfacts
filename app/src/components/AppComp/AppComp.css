@@ -28,11 +28,10 @@
 }
 
 .twitter {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
     width:30%;
     min-width: 300px;
-    max-width: 350px;
     color: #fdffff;
     background-color: #153243   ;
 }
