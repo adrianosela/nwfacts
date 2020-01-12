@@ -14,7 +14,9 @@
     flex-flow: row wrap;
 }
 
-
+.busySpinner {
+  text-align: center;
+}
 /* .newsButtonContainer{
   display: flex;
   justify-content: flex-start ;

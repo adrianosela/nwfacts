@@ -1,22 +1,54 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
 import { Input, TextField } from '@material-ui/core'
 import "./SearchComp.css";
 
 class SearchComp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {redirect: false};
+    }
+
+    onGo = async () => {
+        if(!this.state.queryValue) {
+            return;
+        }
+        const res = await fetch(`/search?keyword=${this.state.queryValue}`, {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            }
+          });
+          const results = await res.json();
+          this.setState({ redirect: true, results: results});
+    }
+
+    handleChange = (event) => {
+        this.state.queryValue = event.target.value;
+    };
+
     render() {
-        return <div className="searchBarComp" >
-                <form noValidate autoComplete="off" className="searchBoxContainer">
-                    <div className="searchBox">
-                        <TextField id="outlined-basic" label="Search News" variant="outlined" fullWidth="true" />
-                    </div>
-                </form>
-                <Button variant="contained" color="primary">
-                    <Link to='/webapp'><a className="searchButton">Go!</a></Link>
-                </Button>
-        </div>
+        if(this.state.redirect) {
+            return <Redirect to={{
+                pathname: '/webapp',
+                state: { results: this.state.results }
+              }} />
+        } else {
+            return <div className="searchBarComp" >
+            <form noValidate autoComplete="off" className="searchBoxContainer">
+                <div className="searchBox">
+                    <TextField id="outlined-basic" label="Search News" variant="outlined" fullWidth="true"  onChange={this.handleChange}/>
+                </div>
+            </form>
+            <Button variant="contained" color="primary" onClick={this.onGo}>
+                Go!
+            </Button>
+            </div>
+        }
+        
     }
 }
 
