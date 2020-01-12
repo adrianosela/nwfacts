@@ -17,12 +17,11 @@ class AppComp extends Component {
             <div className="webapp">
                 <div className="topContainer"> 
                 <div className="twitter">   
-                    {/* <TwitterComp query={this.props.location.state.queryValue}/> */}
-                    <TwitterComp/>
+                    <TwitterComp query={this.props.location.state.queryValue}/>
                 </div>
                 <div className="content">
                     <HeaderComp />
-                    <FilterComp />
+                    <FilterComp results={this.props.location.state.results}/>
                 </div>
                 </div>
             </div>

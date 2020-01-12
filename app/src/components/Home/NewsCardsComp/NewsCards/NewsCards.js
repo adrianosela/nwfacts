@@ -6,6 +6,8 @@ import placeHolderIcon from "../../../../assets/newsIcon.png"
 class NewsCards extends React.Component {
     
     getCategories = (cats) => {
+        if (!cats) {return}
+        console.log('cats', cats)
         let res = ""
         for(var i=0; i<cats.length; i++) {
             res += cats[i].name + (i != cats.length-1 ?  ", " : "")

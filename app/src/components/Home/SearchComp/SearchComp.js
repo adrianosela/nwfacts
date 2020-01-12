@@ -16,18 +16,18 @@ class SearchComp extends React.Component {
         if (!this.state.queryValue) {
             return;
         }
-        //        const res = await fetch(`https://api-dot-nwfacts.appspot.com/search?keyword=${this.state.queryValue}`, {
         this.setState({ loading: true });
-        // const res = await fetch(`https://api-dot-nwfacts.appspot.com/search?keyword=trump`, {
+        const res = await fetch(`https://api-dot-nwfacts.appspot.com/search?keyword=${this.state.queryValue}`, {
+    //const res = await fetch(`https://api-dot-nwfacts.appspot.com/search?keyword=trump`, {
 
-        //     method: 'GET',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     }
-        // });
-        // const results = await res.json();
-        // this.setState({ redirect: true, results: results });
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            }
+          });
+          const results = await res.json();
+          this.setState({ redirect: true, results: results});
     }
 
     handleChange = (event) => {
