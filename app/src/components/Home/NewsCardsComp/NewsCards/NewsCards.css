@@ -83,3 +83,7 @@
 .ImageContainer {
     margin: auto;
 }
+
+.qMarkTooltip {
+    width: 20px;
+}

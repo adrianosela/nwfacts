@@ -1,0 +1,13 @@
+.slackAndEmailButton{
+    display: flex;
+    flex-flow: column;
+    margin: 20px;
+}
+
+.slackLabel{
+    margin: 10px 20px 10px 0;
+} 
+
+.slackButton{
+    margin: 20px;
+}
