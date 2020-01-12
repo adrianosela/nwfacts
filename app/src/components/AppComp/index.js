@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
 
 import "./AppComp.css"
+import { Colors } from "../../constants/index"
 import TwitterComp from '../AppComp/TwitterFeedComp/TwitterFeedComp'
 import HeaderComp from '../AppComp/HeaderComp/HeaderComp'
 import FilterComp from '../AppComp/SearchFilterComp/SearchFilterComp'
@@ -20,7 +21,7 @@ class AppComp extends Component {
                     <TwitterComp query={this.props.location.state.queryValue}/>
                 </div>
                 <div className="content">
-                    <HeaderComp />
+                    {/* <HeaderComp /> */}
                     <FilterComp results={this.props.location.state.results}/>
                 </div>
                 </div>

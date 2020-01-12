@@ -6,7 +6,8 @@
     padding: 20px;
     width: fit-content;
     margin-bottom: 20px;
-    box-shadow:  3px 1px 1px rgba(0, 0, 0, .5)
+    box-shadow:  3px 1px 1px rgba(0, 0, 0, .5);
+    background-color: rgb(252, 252, 252);
 }
 
 .NewsCardLogo{
