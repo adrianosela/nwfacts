@@ -22,7 +22,9 @@ function LandingComp() {
         <SearchComp></SearchComp>
       </div>
       <div className="chevronContainer">
-        <img src={Icon} className="chevronIcon"/>
+        <a href="#trending">
+          <img src={Icon} className="chevronIcon" href="#trending"/>
+        </a>
       </div>
 
     </div>
