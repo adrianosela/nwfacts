@@ -1,0 +1,21 @@
+.home{
+    /* background-color: transparent; */
+    /* margin: 0; */
+    /* padding: 0; */
+}
+
+hr {
+    
+    width: 95%;
+    height: 2px;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    background-color:#666;
+    border: 0 none;
+    margin-top: 80px;
+    margin-bottom:80px;
+    }
+
+.map-marker {
+    color: green;
+}
