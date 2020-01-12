@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import "./NewsCardsComp.css";
 
 import NewsCard from './NewsCards/NewsCards'
@@ -9,16 +9,19 @@ function NewsCardsComp() {
 
     const [ShowComp, setShowComp] = useState(0);
     const imgArray = [imgGoogleIcon];
-
-    return(
-        <div className="newsCardCompContainer"> 
-            <div className="newsCompTitle">Hot News</div>
+    const templateNewsItem = { imageUrl: "https://avatars0.githubusercontent.com/u/1342004?s=400&v=4", headline: "Mourners and protesters crowd Tehran's streets after Iran admits to downing jet",
+     srcName: "Google",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    url: "http://google.com"}
+    return (
+        <div className="newsCardCompContainer">
+            <div className="newsCompTitle">Trending</div>
             <div className="newsCompBody">
-                <NewsCard />
-                <NewsCard />
-                <NewsCard />
-                <NewsCard />
-                </div>
+                <NewsCard source={templateNewsItem} />
+                <NewsCard source={templateNewsItem} />
+                <NewsCard source={templateNewsItem} />
+                <NewsCard source={templateNewsItem} />
+            </div>
         </div>
     );
 }
