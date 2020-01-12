@@ -7,7 +7,7 @@ The ultimate anti-bias tool for browsing the news.
 
 ## Contents
 
-* [Aim and Motivations](#project-aim)
+* [Aim and Motivations](#project-aim-and-motivations)
 * [High Level Design](#design-specification)
 * [Monetization](#means-to-monetization)
 
