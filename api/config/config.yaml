@@ -3,6 +3,6 @@ server_settings:
     debug: true
 newsapi_settings:
     url: https://newsapi.org
-    api_key: 12238e0ef2ed4615b2b8cf9b60a957ae
+    api_key: 13be2aecc0cc40248111c59bedebefeb
 articleparser_settings:
     url: https://us-central1-nwfacts.cloudfunctions.net/ArticleParser
