@@ -38,6 +38,14 @@
     font-weight: lighter;
 }   
 
+.chevronContainer {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chevronIcon {
+    width: 60px;
+}
 /* .buttonWrapper{
     display: flex;
     flex-flow: row wrap;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from '../LandingComp/SearchBar/SearchBar'
 import SearchComp from '../SearchComp/SearchComp'
 import "./LandingComp.css";
-
+import Icon from "../../../assets/chevron.png"
 
 function LandingComp() {
 
@@ -16,6 +16,10 @@ function LandingComp() {
       <div className="searchBarContainer">
         <SearchComp></SearchComp>
       </div>
+      <div className="chevronContainer">
+        <img src={Icon} className="chevronIcon"/>
+      </div>
+      
     </div>
   )
 }
