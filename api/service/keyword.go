@@ -7,12 +7,11 @@ import (
 )
 
 func (s *Service) addKeywordEndpoints() {
-	s.Router.Methods(http.MethodGet).Path("/search").HandlerFunc(s.searchKeywordHandler)
+	s.Router.Methods(http.MethodGet, http.MethodOptions).Path("/search").HandlerFunc(s.searchKeywordHandler)
 }
 
 func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
-	// allow CORS
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	allowCORS(w)
 
 	// parse keywords from get param
 	keyword, ok := r.URL.Query()["keyword"]
@@ -39,4 +38,9 @@ func (s *Service) searchKeywordHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write(byt)
 	return
+}
+
+func allowCORS(w http.ResponseWriter) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
 }
