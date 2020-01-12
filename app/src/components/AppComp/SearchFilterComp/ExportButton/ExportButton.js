@@ -19,9 +19,12 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function TransitionsModal() {
+export default function TransitionsModal(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
+    const [clickSlack, setclickSlack] = React.useState(false);
+    const [clickEmail, setclickEmail] = React.useState(false);
+    const [email, setemail] = React.useState(null);
 
     const handleOpen = () => {
         setOpen(true);
@@ -30,6 +33,29 @@ export default function TransitionsModal() {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const getCheckboxValue=(event)=> {
+        const value = event.target.value;
+        setclickSlack(value);
+    };
+
+    const getCheckboxValue1 =(event)=>{
+        const Emailvalue = event.target.value;
+        setclickEmail(Emailvalue);
+    };
+
+    const onClickHandler = () => {
+        let emailEntered = null;
+        if(clickEmail == 'on') {
+            emailEntered = email;
+            props.onfinishEmail(emailEntered)
+        }
+        if(clickSlack == 'on') {
+            props.onfinishSlack()
+        }
+        console.log(props);
+        // props.onfinish(clickSlack, emailEntered);
+    }
 
     return (
         <div>
@@ -53,9 +79,10 @@ export default function TransitionsModal() {
                         <h3 id="transition-modal-title">Export Options</h3>
                         <div className='slackAndEmailButton'>
                         <form className="emailForm">
-                            <input className="slackLabel" type="radio" name="gender" value="male" /><label >Slack</label><br></br>
-                            <label>Email: <input type="text" name="name" /></label><br />
-                            <input type="submit" value="Submit" />
+                            <input className="slackLabel" name='slack' type="checkbox"  onClick={getCheckboxValue.bind(this)} /><label >Slack</label><br></br>
+                            <input className="emailLabel" name='email' type="checkbox" onClick={getCheckboxValue1.bind(this)} /><label >Email</label><br></br>
+                            <label>Email Address: <input type="text" onChange={(e)=>{setemail(e.target.value)}}  name="email" /></label><br />
+                            <input type="button" value="Submit" onClick={onClickHandler} />
                         </form>
                     </div>
           </div>
@@ -64,76 +91,3 @@ export default function TransitionsModal() {
     </div >
   );
 }
-
-
-// import React from 'react';
-// import { Dropdown, DropdownButton } from 'react-bootstrap';
-
-// function ExportButton(){
-//     return(
-//         <div className="ExportButtonContainer">
-//             <DropdownButton id="dropdown-item-button" title="Export">
-//             <Dropdown.Item as="button">Slack</Dropdown.Item>
-//             <Dropdown.Item as="button">Email</Dropdown.Item>
-//             </DropdownButton>
-//         </div>
-//     )
-// }
-
-// export default ExportButton;
-
-// import React, { Component } from "react";
-// import Popup from "reactjs-popup";
-// import './ExportButton.css'
-
-// class ExportButton extends Component{
-//     render(){
-//         return(
-//             <Popup trigger={<button className="button"> Export </button>} modal>
-//               {close => (
-//                 <div className="modal">
-//                   <a className="close" onClick={close}>
-//                     &times;
-//                   </a>
-//                   <div className="header"> Export options</div>
-//                   <div className="content">
-//                     {" "}
-//                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
-//                     Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
-//                     delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-//                     <br />
-//                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
-//                     commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
-//                     explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
-//                   </div>
-//                   <div className="actions">
-//                     <Popup
-//                       trigger={<button className="button"> Trigger </button>}
-//                       position="top center"
-//                       closeOnDocumentClick
-//                     >
-//                       <span>
-//                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-//                         magni omnis delectus nemo, maxime molestiae dolorem numquam
-//                         mollitia, voluptate ea, accusamus excepturi deleniti ratione
-//                         sapiente! Laudantium, aperiam doloribus. Odit, aut.
-//                       </span>
-//                     </Popup>
-//                     <button
-//                       className="button"
-//                       onClick={() => {
-//                         console.log("modal closed ");
-//                         close();
-//                       }}
-//                     >
-//                       close modal
-//                     </button>
-//                   </div>
-//                 </div>
-//               )}
-//             </Popup>
-//           )
-//                     }
-// }
-
-// export default ExportButton;
