@@ -34,7 +34,7 @@ class SearchComp extends React.Component {
         if(this.state.redirect) {
             return <Redirect to={{
                 pathname: '/webapp',
-                state: { results: this.state.results }
+                state: { results: this.state.results, queryValue: this.state.queryValue }
               }} />
         } else {
             return <div className="searchBarComp" >
