@@ -1,4 +1,4 @@
-package newsparser-client
+package client
 
 import (
 	"errors"
