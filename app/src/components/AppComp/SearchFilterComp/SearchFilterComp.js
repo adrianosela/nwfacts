@@ -15,6 +15,7 @@ class SearchFilterComp extends Component{
                 <div className="searchBar">
                     <SearchComp />
                 </div>
+                <div className="searchResultsTitle">Search Results</div>
                 <div className="searchedCards"><SearchedCards results={this.props.results}/></div>
             </div>
         )

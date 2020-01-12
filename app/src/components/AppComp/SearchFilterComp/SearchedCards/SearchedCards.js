@@ -41,12 +41,12 @@ class SearchedCards extends React.Component {
     }
     render() {
         if(!this.state.ready) {
-            return <div className="busySpinner">
+            return <div className="busySpinner1">
                 </div>
         } else {
             return (
-                <div className="newsCardCompContainer">
-                    <div className="newsCompBody">
+                <div className="newsCardCompContainer1">
+                    <div className="newsCompBody1">
                         <ScrollArea>
                             {this.renderNewsCards(this.props.results.results)}
                         </ScrollArea>
