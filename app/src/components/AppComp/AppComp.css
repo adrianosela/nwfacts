@@ -23,6 +23,7 @@
 }
 
 .content {
+
     width:77%;
     background-color: rgb(247, 252, 251);
     overflow: hidden;
@@ -38,4 +39,5 @@
     max-width: 350px;
     color: #000000;
     background-color: rgb(247, 252, 251);
+
 }
