@@ -27,5 +27,8 @@
 }
 
 .twitter {
+    margin-left: 10px;
     width:30%;
+    min-width: 300px;
+    max-width: 350px;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
 
 import "./AppComp.css"
@@ -7,20 +7,26 @@ import HeaderComp from '../AppComp/HeaderComp/HeaderComp'
 import FilterComp from '../AppComp/SearchFilterComp/SearchFilterComp'
 
 
-const AppComp = () => {
-    return(
-        <div className="webapp">
-            <div className="topContainer"> 
-             <div className="twitter">   
-                <TwitterComp />
-             </div>
-             <div className="content">
-                <HeaderComp />
-                <FilterComp />
-             </div>
+class AppComp extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return(
+            <div className="webapp">
+                <div className="topContainer"> 
+                <div className="twitter">   
+                    <TwitterComp query={this.props.location.state.queryValue}/>
+                </div>
+                <div className="content">
+                    <HeaderComp />
+                    <FilterComp />
+                </div>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 };
 
 
