@@ -6,10 +6,20 @@
     height: 81%;
 }
 
+.divider{
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 40px 0px 10px 0;
+}
+
 .searchBar{
     display: flex;
-    margin-top: 40px;    
-    height: 10%;
+    height: 100%;
+}
+
+.exportButton{
+    display: flex;
+    margin-left: 20px;
 }
 
 .searchResultsTitle{
