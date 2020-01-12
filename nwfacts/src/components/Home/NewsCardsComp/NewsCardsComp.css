@@ -7,13 +7,6 @@
     padding: 0 70px 0 70px;
 }
 
-.newsCompTitle{
-    font-weight: bold;
-    font-size: 4em;
-    padding: 10px 10vw 40px 10vw;
-    text-decoration: underline;
-}
-
 .newsCompBody{
     display: flex;    
     justify-content: space-evenly;

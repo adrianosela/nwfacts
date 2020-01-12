@@ -3,7 +3,7 @@ import "./NewsCardsComp.css";
 
 import NewsCard from './NewsCards/NewsCards'
 import imgGoogleIcon from '../../../assets/googleIcon.svg'
-
+import TitleComp from '../TitleComp/TitleComp'
 
 function NewsCardsComp() {
 
@@ -15,7 +15,7 @@ function NewsCardsComp() {
     url: "http://google.com"}
     return (
         <div className="newsCardCompContainer">
-            <div className="newsCompTitle">Trending</div>
+            <TitleComp title="Trending"></TitleComp>
             <div className="newsCompBody">
                 <NewsCard source={templateNewsItem} />
                 <NewsCard source={templateNewsItem} />

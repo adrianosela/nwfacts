@@ -4,12 +4,15 @@ import "./FeaturesComp.css"
 import IconTree from "../../../assets/Icon_Tree.png"
 import IconChart from "../../../assets/Icon_Chart.png"
 import IconAnalyze from "../../../assets/Icon_Analyze1.png"
+import TitleComp from '../TitleComp/TitleComp'
 
 function FeaturesComp() {
 
     return (
         <div className="featuresCompWrapper">
-            <div className="featuresCompTitle">Featured</div>
+            <div className="featuresCompTitle">
+                <TitleComp title="Features"></TitleComp>
+            </div>
             <div className="featuresCompBody">
                 <div className="featuresWrapper">
                     <div className="featuresImg">
