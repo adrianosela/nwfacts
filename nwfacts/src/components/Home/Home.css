@@ -1,5 +1,5 @@
 .home{
-    /* background-color: transparent; */
+    background-color: transparent;
     /* margin: 0; */
     /* padding: 0; */
 }
@@ -16,6 +16,16 @@ hr {
     margin-bottom:80px;
     }
 
-.map-marker {
-    color: green;
+
+.particles {
+    display: flex;
+    position: fixed;
+    overflow: hidden;
+    left:0;
+    top:0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    /* color: red;
+    background-color: #000000; */
 }
