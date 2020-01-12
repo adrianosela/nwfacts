@@ -58,7 +58,7 @@ module.exports = async (data) => {
         const mailOptions = {
           from: 'febg3@yahoo.com', // sender address
           to: 'felipeballesteros1@gmail.com', // TODO
-          subject: 'Asian pussy', // Subject line
+          subject: 'I love money', // Subject line
           html: '<p>Something</p>',// plain text body
           attachments: [
             {
