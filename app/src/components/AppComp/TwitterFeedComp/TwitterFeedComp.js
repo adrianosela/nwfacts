@@ -14,12 +14,7 @@ const loop = function(tweets) {
             tweetId={tweets[id]}
         />)
     }
-    console.log(arr)
     return arr
-}
-
-const getTweets = function() {
-
 }
 
 class TwitterFeedComp extends Component{
@@ -31,7 +26,7 @@ class TwitterFeedComp extends Component{
         }
     }
     componentDidMount() {
-        fetch('https://febg.api.stdlib.com/http-project@dev/twitter-get/?keywords='+'trump',  {
+        fetch('https://febg.api.stdlib.com/http-project@dev/twitter-get/?keywords='+this.props.query,  {
                 method: 'GET',
                 headers: {
                   'Accept': 'application/json',
@@ -44,7 +39,6 @@ class TwitterFeedComp extends Component{
         
     }
     render () {
-        console.log('render')
         return (
             <div className="TwitterFeedCompContainer">
             <div className="title">Twitter</div>
